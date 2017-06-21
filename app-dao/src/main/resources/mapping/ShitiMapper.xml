@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hao.app.dao.ShitiMapper">
+  
+  <resultMap id="BaseResultMap" type="com.hao.app.pojo.Shiti">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="numb" jdbcType="INTEGER" property="numb" />
+    <result column="question" jdbcType="VARCHAR" property="question" />
+    <result column="answer" jdbcType="VARCHAR" property="answer" />
+    <result column="pic" jdbcType="LONGVARCHAR" property="pic" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="title" jdbcType="LONGVARCHAR" property="title" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    id, numb, question, answer,pic,flag,title
+  </sql>
+  
+  
+  <insert id="insert" parameterType="com.hao.app.pojo.Shiti">
+    insert into shiti (numb, question, answer,pic,flag,title)
+    values (
+    	#{numb}, 
+    	#{question}, 
+    	#{answer}, 
+    	#{pic}, 
+    	#{flag}, 
+     	#{title}
+     )
+  </insert>
+  
+  <select id="queryList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from shiti
+    where 1
+    <if test="key != null">
+	    and (question like CONCAT('%',#{key},'%') or answer like CONCAT('%',#{key},'%'))
+    </if>
+    <if test="flag != null">
+	    and flag = #{flag}
+    </if>
+    <if test="title != null">
+	    and title like CONCAT('%',#{title},'%')
+    </if>
+    order by numb asc
+    limit ${pageStart},${pageLimit}
+  </select>
+  
+  <select id="queryCount" resultType="java.lang.Integer">
+    select count(*) from shiti
+    where 1
+    <if test="key != null">
+	    and (question like CONCAT('%',#{key},'%') or answer like CONCAT('%',#{key},'%'))
+    </if>
+    <if test="flag != null">
+	    and flag = #{flag}
+    </if>
+    <if test="title != null">
+	    and title like CONCAT('%',#{title},'%')
+    </if>
+  </select>
+  
+</mapper>
