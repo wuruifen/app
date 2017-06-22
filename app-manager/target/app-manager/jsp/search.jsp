@@ -12,19 +12,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>
 	试题搜索
-
-	<script type="text/javascript">
-		function search() {
-			var keyword = document.getElementById("keyword");
-			if (keyword == null || keyword == ''){
-			    alert("请输入搜索词！");
-			    return;
-			}
-
-			location.href = "searchKeyWord.do?keyword="+keyword;
-        }
-
-	</script>
 </title>
 </head>
 <body>
@@ -32,4 +19,20 @@
 <input name="keyword" id="keyword" value="">
 <input type="button" value="搜一下" onclick="search()">
 </body>
+
+<script type="text/javascript">
+    function search() {
+        var keyword = document.getElementById("keyword").value;
+        location.href = "searchDetail.do?keyword="+keyword;
+    }
+    document.onkeydown = function(e){
+        if(!e){
+            e = window.event;
+        }
+        if((e.keyCode || e.which) == 13){
+            search();
+        }
+    }
+
+</script>
 </html>
