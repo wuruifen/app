@@ -68,7 +68,8 @@ public class SystemController extends BaseController{
 			request.getSession().setAttribute(Constants.CURRENT_LOGIN_USER, member);
 		
 			sysLogsService.writeLog(getCurrentUserName(request), "用户登录");
-			response.sendRedirect("initMain.do");
+//			response.sendRedirect("initMain.do");
+			response.sendRedirect("initSearch.do");
 			return null;
 		}else{
 			//登录失败
