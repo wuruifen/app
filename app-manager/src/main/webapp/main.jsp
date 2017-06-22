@@ -21,7 +21,7 @@
 								+'<img src="" style="max-width:50px;max-height:30px;">'
 							+'</td>'
 							+'<td>'
-								+'<b style="margin-top:20px;">APP管理系统</b>'
+								+'<b style="margin-top:20px;">答案搜索工具</b>'
 							+'</td>'
 							+'<td align="right">'
 								+'<img src="imgs/person.ico" style="margin-right:8px;"/>'

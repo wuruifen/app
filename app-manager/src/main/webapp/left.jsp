@@ -22,7 +22,7 @@
 			height: document.documentElement.clientHeight,
 			root : {
 				id : 0,
-				text : 'APP管理系统',
+				text : '答案搜索工具',
 				href : '#',
 				hrefTarget:'layout_page_right',
 				leaf : false,
