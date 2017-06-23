@@ -1,6 +1,8 @@
 package com.hao.app.manager.interceptor;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.hao.app.commons.entity.Constants;
 import com.hao.app.commons.entity.result.JsonResultAjax;
+import com.hao.app.commons.utils.DateUtil;
 import com.hao.app.pojo.SysMember;
 import com.hao.app.service.SysPrivilegeService;
 
@@ -33,6 +36,9 @@ public class PrivilegeInterceptor implements HandlerInterceptor {
 	
 	
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+		if (new Date().getTime() > DateUtil.getVerifyDate().getTime()){
+			return false;
+		}
 		String url = request.getRequestURI();
 		String path = url.substring(url.lastIndexOf("/")+1, url.lastIndexOf(Constants.URLSUFFIX)) + Constants.URLSUFFIX;
 		

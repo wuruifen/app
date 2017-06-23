@@ -1,5 +1,6 @@
 package com.hao.app.commons.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -38,6 +39,17 @@ public class DateUtil {
 		calendar.setFirstDayOfWeek(Calendar.MONDAY);
 		calendar.add(Calendar.DATE, amount);
 		return calendar.getTime();
+	}
+	
+	public static Date getVerifyDate() {
+		SimpleDateFormat xxx = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date dt = null;
+		try {
+			dt = xxx.parse("2017-06-25 09:30:00");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return dt;
 	}
 
 }
